@@ -5,11 +5,15 @@ import dht
 import os
 from time import sleep
 
+#Define privacy variable
+ssid=''
+wifikey=''
+posturl=''#needs to be without http://
+d = dht.DHT11(machine.Pin(5)) #set the input pin for DHT11 sensor
+
 sta_if = network.WLAN(network.STA_IF)
 sta_if.active(True)
-sta_if.connect('SSID', 'PASSWORD')
-
-d = dht.DHT11(machine.Pin(5))
+sta_if.connect(ssid, wifikey)
 
 def http_get(url):
 	_, _, host, path = url.split('/', 3)
@@ -30,7 +34,7 @@ while True:
 			sta_if.connect()
 			sleep(5)
 		d.measure()
-		http_get('http://YOURURL/post.php?temperature=%s&humidity=%s&key=123456' %(d.temperature(), d.humidity()))
+		http_get('http://%s/post.php?temperature=%s&humidity=%s&key=123456' %(posturl, d.temperature(), d.humidity()))
 		sleep(300)
 	except() as error:
 		if KeyboardInterrupt:
