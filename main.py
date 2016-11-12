@@ -15,6 +15,15 @@ sta_if = network.WLAN(network.STA_IF)
 sta_if.active(True)
 sta_if.connect(ssid, wifikey)
 
+def err_log(log)
+        if os.stat('error.log')[6] > 200000:
+        os.remove('error.log')
+        strerror=str(log)
+        f=open('error.log', 'a')
+        f.write(strerror+'\n')
+        f.close()
+
+
 def http_get(url):
 	_, _, host, path = url.split('/', 3)
 	addr = socket.getaddrinfo(host, 80)[0][-1]
@@ -40,10 +49,5 @@ while True:
 		if KeyboardInterrupt:
 			break
 		else:
-			if os.stat('error.log')[6] > 200000:
-				os.remove('error.log')
-			strerror=str(error)
-			f=open('error.log', 'a')
-			f.write(strerror+'\n')
-			f.close()
+			err_log(error)
 			pass
