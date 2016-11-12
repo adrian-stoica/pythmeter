@@ -15,13 +15,13 @@ sta_if = network.WLAN(network.STA_IF)
 sta_if.active(True)
 sta_if.connect(ssid, wifikey)
 
-def err_log(log)
-        if os.stat('error.log')[6] > 200000:
-        os.remove('error.log')
-        strerror=str(log)
-        f=open('error.log', 'a')
-        f.write(strerror+'\n')
-        f.close()
+def err_log(log):
+	if os.stat('error.log')[6] > 200000:
+		os.remove('error.log')
+	strerror=str(log)
+	f=open('error.log', 'a')
+	f.write(strerror+'\n')
+	f.close()
 
 
 def http_get(url):
