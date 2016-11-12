@@ -43,4 +43,3 @@ while True:
 			f.write(strerror+'\n')
 			f.close()
 			pass
-
