@@ -14,7 +14,7 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-		echo "<head><link rel=stylesheet type=text/css href=pythermo.css></head>\r\n";
+		echo "<head><link rel=stylesheet type=text/css href=pythermo.css><meta http-equiv=refresh content=300></head>\r\n";
 		echo "<body>\r\n";
         echo "<div class=pythermo-css> Date/Time: ". $row["date"]. "<br> Temperature: " . $row["temperature"]." &#8451;<br> Humidity: " . $row["humidity"]."% </div>\r\n";
     }
