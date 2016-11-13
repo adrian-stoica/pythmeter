@@ -1,0 +1,34 @@
+.pythermo-css {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  margin: 58px;
+  padding: 17px 23px 18px;
+  border: none;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  font: normal 35px/151% Arial, Helvetica, sans-serif;
+  color: rgba(255,255,255,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  white-space: pre;
+  word-spacing: 1px;
+  background: #3498db;
+}
+.table-css {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  margin: 58px;
+  padding: 17px 23px 18px;
+  border: none;
+  -webkit-border-radius: 9px;
+  border-radius: 9px;
+  font: normal 10px/151% Arial, Helvetica, sans-serif;
+  color: rgba(255,255,255,1);
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  white-space: pre;
+  word-spacing: 1px;
+  background: #3498db;
+}
