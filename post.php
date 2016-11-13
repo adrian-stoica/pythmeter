@@ -1,9 +1,6 @@
 <?php
-//Configure you credentials
-$servername = "";
-$username = "";
-$password = "";
-$dbname = "";
+
+include "db.php";
 
 //Define data variable
 $temperature = $_GET['temperature'];
