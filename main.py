@@ -34,23 +34,23 @@ def http_get(url):
 		s = socket.socket()
 		connect = s.connect(addr)
 		s.send(bytes('GET /%s HTTP/1.0\r\nHost: %s\r\n\r\n' % (path, host), 'utf8'))
-		while True:
-			data = s.recv(100)
-			if data:
-				print(str(data, 'utf8'), end='')
-			else:
-				break
+		sleep(5)
+		s.close()
 	except NameError as error:
 		err_log(error)
 
 while True:
 	try:
 		if sta_if.isconnected() is False:
-			sta_if.connect()
+			sta_if.connect(ssid, wifikey)
 			sleep(5)
-		d.measure()
-		http_get('http://%s/post.php?temperature=%s&humidity=%s&key=123456' %(posturl, d.temperature(), d.humidity()))
-		sleep(300)
+			d.measure()
+			http_get('http://%s/post.php?temperature=%s&humidity=%s&key=123456' %(posturl, d.temperature(), d.humidity()))
+			sleep(300)
+		else:
+			d.measure()
+			http_get('http://%s/post.php?temperature=%s&humidity=%s&key=123456' %(posturl, d.temperature(), d.humidity()))
+			sleep(300)
 	except() as error:
 		if KeyboardInterrupt:
 			break
