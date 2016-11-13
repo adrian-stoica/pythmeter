@@ -6,10 +6,10 @@ import os
 from time import sleep
 
 #Define privacy variable
-ssid=''
-wifikey=''
-posturl=''#needs to be without http://
-d = dht.DHT11(machine.Pin(5)) #set the input pin for DHT11 sensor
+ssid=''				#your wifi ssid
+wifikey=''			#your wifi key
+posturl=''			#needs to be without http://
+d = dht.DHT11(machine.Pin(5)) 	#set the input pin for DHT11 sensor
 
 sta_if = network.WLAN(network.STA_IF)
 sta_if.active(True)
@@ -26,16 +26,22 @@ def err_log(log):
 
 def http_get(url):
 	_, _, host, path = url.split('/', 3)
-	addr = socket.getaddrinfo(host, 80)[0][-1]
-	s = socket.socket()
-	s.connect(addr)
-	s.send(bytes('GET /%s HTTP/1.0\r\nHost: %s\r\n\r\n' % (path, host), 'utf8'))
-	while True:
-		data = s.recv(100)
-		if data:
-			print(str(data, 'utf8'), end='')
-		else:
-			break
+	try:
+		addr = socket.getaddrinfo(host, 80)[0][-1]
+	except OSError as error:
+		err_log(error)
+	try:
+		s = socket.socket()
+		connect = s.connect(addr)
+		s.send(bytes('GET /%s HTTP/1.0\r\nHost: %s\r\n\r\n' % (path, host), 'utf8'))
+		while True:
+			data = s.recv(100)
+			if data:
+				print(str(data, 'utf8'), end='')
+			else:
+				break
+	except NameError as error:
+		err_log(error)
 
 while True:
 	try:
